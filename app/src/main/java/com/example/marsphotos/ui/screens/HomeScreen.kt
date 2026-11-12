@@ -33,6 +33,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.marsphotos.R
+import com.example.marsphotos.model.MarsPhoto
 import com.example.marsphotos.ui.theme.MarsPhotosTheme
 
 @Composable
@@ -46,7 +47,7 @@ fun HomeScreen(
         is MarsUiState.Success -> ResultScreen(
             marsUiState.photos, modifier = modifier.fillMaxWidth()
         )
-        is MarsUiState.Error -> ErrorScreen( modifier = modifier.fillMaxSize())
+        is MarsUiState.Error -> ErrorScreen(modifier = modifier.fillMaxSize())
     }
 }
 
@@ -112,6 +113,7 @@ fun ErrorScreenPreview() {
 @Composable
 fun PhotosGridScreenPreview() {
     MarsPhotosTheme {
+        val mockData = List(10) { MarsPhoto("$it", "") }
         ResultScreen(stringResource(R.string.placeholder_success))
     }
 }
